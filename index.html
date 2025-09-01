@@ -1,0 +1,793 @@
+<html lang="en">
+<head data-avatar-base="https://a.1passwordusercontent.com/" data-backoffice-banner="Production"
+      data-backoffice-stage="prd" data-billing-origin="https://billing.1passwordservices.com"
+      data-brex-auth="CLIENT_SECRET" data-brex-client-id="bri_b2df18d65bc82a948573537157eceb07" data-brex-enabled="true"
+      data-brex-scope="openid offline_access cards cards.pan users.readonly" data-brex-url="https://accounts.brex.com"
+      data-build-time="05 Sep 24 04:09 +0000" data-checkly-enabled="true" data-churn-survey-id=""
+      data-contact-origin="https://contact.1passwordservices.com" data-duo-origin="https://duo.1passwordservices.com"
+      data-email-service-origin="https://email-providers.1passwordservices.com" data-env="prd"
+      data-fastmail-client-id="35c941ae" data-fastmail-enabled="true"
+      data-fastmail-scope="urn:ietf:params:jmap:core https://www.fastmail.com/dev/maskedemail"
+      data-fcm-api-key="AIzaSyCs8WNa10YE5AVyfL33RBHBKQdYZMw7OB0"
+      data-fcm-app-id="1:928673166066:web:d02cb3a827413eaf69d66b" data-fcm-enabled="true"
+      data-fcm-project-id="b5-notification-prd" data-fcm-sender-id="928673166066"
+      data-fcm-vapid="BF6rTuczKFn52BTG4dDHt9Fj3jJD5T-PHKNplVDhBu_wcOU-57iUCtPI4t8t2nucaizFjime_jVBG7p1EpQlQug"
+      data-files-base="https://f.1passwordusercontent.com/"
+      data-flow-service-origin="https://flow.1passwordservices.com" data-gitrev="d2f6f926d77d"
+      data-hostname="1password.com" data-images-base="https://app.1password.com/images/"
+      data-map-origin="https://map.1passwordservices.com" data-nps-survey-id="DD6dHG0NMGL3Dh75"
+      data-privacy-com-enabled="true" data-ramp-enabled="true"
+      data-ramp-url="https://ramp.com/1password?partner_promo=1password-500"
+      data-sentry-dsn="https://6342e577bc314e54ab2c5650a4c5be8f:f7b7d11056d84dd0b09e9a9ca31a72e8@web-ui-sentry.1passwordservices.com/4505133602045952"
+      data-sentry-enabled="true" data-sibling-domains="1password.ca,1password.eu,ent.1password.com"
+      data-slack-app-id="A81FQ3116" data-slack-client-id="36986904051.273534103040"
+      data-slack-scope-v1="channels:read,groups:read,users:read,users:read.email,usergroups:read,chat:write:bot"
+      data-slack-scope="channels:read,chat:write,chat:write.public,chat:write.customize,groups:read,users:read,users:read.email,usergroups:read,team:read"
+      data-snowplow-url="https://telemetry.1passwordservices.com" data-stripe-default-currency="USD"
+      data-stripe-key="pk_live_F59R8NjiAi5Eu7MJcnHmdNjj" data-supports-gift-cards="true"
+      data-survey-origin="https://survey.1passwordservices.com" data-txt-base="https://app.1password.com/txt/"
+      data-version="1817" data-wasm-base="https://app.1password.com/wasm/"
+      data-webpack-public-path="https://app.1password.com/" data-whats-new-origin="https://1password.com"
+      data-workers-dir="workers/">
+    <title>Login | 1Password — Password Manager for Teams, Businesses, and Families</title>
+    <link rel="canonical" href="https://my.1password.com/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" media="all" href="https://app.1password.com/css/knox-styles-7d9189b61244075f4573.css"
+          integrity="sha384-Sc1u98Ra98qYE/ogh+nhPgU3ZHZvZBa0KoK+kbPJpW05VH4MbBcs06XFKb6cDAIi" crossorigin="anonymous">
+    <link rel="stylesheet" media="all" href="https://app.1password.com/css/vendor-other-30c64520ce8cdaea13f9.css"
+          integrity="sha384-sjHxDTJ8G8FvSZQeiFShtqRnWfCxnrV184pS/LxfiqVCGs9uhEfwYQiIbERzuOWZ" crossorigin="anonymous">
+    <link rel="stylesheet" media="all" href="https://app.1password.com/css/global-css-cdc0686fedcf2e8a568f.css"
+          integrity="sha384-CVcMBauB9FcCHPVY0glKp/LAmH6jgjM2JPY4vzQY1VdiJgIyE8zlZw7SfFQ2HfS4" crossorigin="anonymous">
+    <link rel="stylesheet" media="all" href="https://app.1password.com/css/app-c98c91a054272137855a.css"
+          integrity="sha384-MjD5bQzmfRbBveB1PjNarAzzbmxsBAlyk6F4q4AXLIgagAQXKfnE+kKUrkBgJySj" crossorigin="anonymous">
+    <!--    <meta http-equiv="Content-Security-Policy"-->
+    <!--          content="default-src 'none'; form-action 'none'; frame-ancestors 'none'; report-uri https://csp.1passwordservices.com/report?tags=b5_prd; report-to csp-endpoint; script-src https://app.1password.com 'wasm-unsafe-eval' 'sha256-KWsQ9f8Zx0pe3RbREHnIqiaCmx+Up0a3pyONYoO7EMA=' 'sha256-rUE4AvuZWal/6Dr/fNJbZ72hsPZWujgwEYMSEbC4EY4=' 'sha256-8ZjREj5hcurWGlvSQOMUcP7taKbgKJAzPXHf53yP1Ac='; style-src https://app.1password.com 'sha256-dHlRZbIBjBXo9m7/kOtIREHDoVNQWPIOPaIan9Q5iKA='; font-src https://app.1password.com; img-src data: blob:  https://c.1password.com https://cache.agilebits.com https://app.1password.com https://a.1passwordusercontent.com/ https://a.1passwordusercontent.ca https://a.1passwordusercontent.eu https://a.1passwordentusercontent.com  https://avatars.slack-edge.com https://mkt.1password.co; child-src 'self' https://*.duosecurity.com https://*.duofederal.com https://map.1passwordservices.com https://billing.1passwordservices.com https://duo.1passwordservices.com; worker-src 'self'; frame-src 'self' https://*.duosecurity.com https://*.duofederal.com https://map.1passwordservices.com https://billing.1passwordservices.com https://duo.1passwordservices.com https://1password.com https://survey.1passwordservices.com https://email-providers.1passwordservices.com; connect-src 'self' blob:  https://watchtower.1password.com https://api.pwnedpasswords.com https://app.1password.com wss://b5n.1password.com https://f.1passwordusercontent.com/  https://*.1password.com https://*.1password.ca https://*.1password.eu https://*.ent.1password.com  https://a.1passwordusercontent.com/ https://contact.1passwordservices.com https://flow.1passwordservices.com  https://firebaseinstallations.googleapis.com https://fcmregistrations.googleapis.com   https://web-ui-sentry.1passwordservices.com  https://crl.1passwordservices.com; upgrade-insecure-requests">-->
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://app.1password.com/images/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="https://app.1password.com/images/apple-touch-icon-iphone-3x.png"
+          sizes="180x180">
+    <link rel="apple-touch-icon-precomposed" href="https://app.1password.com/images/apple-touch-icon-ipad-pro.png"
+          sizes="167x167">
+    <link rel="apple-touch-icon-precomposed" href="https://app.1password.com/images/apple-touch-icon-ipad-2x.png"
+          sizes="152x152">
+    <link rel="apple-touch-icon-precomposed" href="https://app.1password.com/images/apple-touch-icon-iphone-2x.png"
+          sizes="120x120">
+    <link rel="apple-touch-icon-precomposed" href="https://app.1password.com/images/apple-touch-icon-ipad.png"
+          sizes="76x76">
+    <link rel="apple-touch-icon-precomposed" href="https://app.1password.com/images/apple-touch-icon-iphone.png"
+          sizes="60x60">
+    <link rel="mask-icon" href="https://app.1password.com/images/pinned-tab.svg" color="black">
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+    <style data-id="immersive-translate-input-injected-css">.immersive-translate-input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 2147483647;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .immersive-translate-attach-loading::after {
+        content: " ";
+
+        --loading-color: #f78fb6;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        display: block;
+        margin: 12px auto;
+        position: relative;
+        color: white;
+        left: -100px;
+        box-sizing: border-box;
+        animation: immersiveTranslateShadowRolling 1.5s linear infinite;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-2000%, -50%);
+        z-index: 100;
+    }
+
+    .immersive-translate-loading-spinner {
+        vertical-align: middle !important;
+        width: 10px !important;
+        height: 10px !important;
+        display: inline-block !important;
+        margin: 0 4px !important;
+        border: 2px rgba(221, 244, 255, 0.6) solid !important;
+        border-top: 2px rgba(0, 0, 0, 0.375) solid !important;
+        border-left: 2px rgba(0, 0, 0, 0.375) solid !important;
+        border-radius: 50% !important;
+        padding: 0 !important;
+        -webkit-animation: immersive-translate-loading-animation 0.6s infinite linear !important;
+        animation: immersive-translate-loading-animation 0.6s infinite linear !important;
+    }
+
+    @-webkit-keyframes immersive-translate-loading-animation {
+        from {
+            -webkit-transform: rotate(0deg);
+        }
+
+        to {
+            -webkit-transform: rotate(359deg);
+        }
+    }
+
+    @keyframes immersive-translate-loading-animation {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(359deg);
+        }
+    }
+
+
+    .immersive-translate-input-loading {
+        --loading-color: #f78fb6;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        display: block;
+        margin: 12px auto;
+        position: relative;
+        color: white;
+        left: -100px;
+        box-sizing: border-box;
+        animation: immersiveTranslateShadowRolling 1.5s linear infinite;
+    }
+
+    @keyframes immersiveTranslateShadowRolling {
+        0% {
+            box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+        }
+
+        12% {
+            box-shadow: 100px 0 var(--loading-color), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+        }
+
+        25% {
+            box-shadow: 110px 0 var(--loading-color), 100px 0 var(--loading-color), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+        }
+
+        36% {
+            box-shadow: 120px 0 var(--loading-color), 110px 0 var(--loading-color), 100px 0 var(--loading-color), 0px 0 rgba(255, 255, 255, 0);
+        }
+
+        50% {
+            box-shadow: 130px 0 var(--loading-color), 120px 0 var(--loading-color), 110px 0 var(--loading-color), 100px 0 var(--loading-color);
+        }
+
+        62% {
+            box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 var(--loading-color), 120px 0 var(--loading-color), 110px 0 var(--loading-color);
+        }
+
+        75% {
+            box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 var(--loading-color), 120px 0 var(--loading-color);
+        }
+
+        87% {
+            box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 var(--loading-color);
+        }
+
+        100% {
+            box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
+        }
+    }
+
+
+    .immersive-translate-search-recomend {
+        border: 1px solid #dadce0;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 16px;
+        position: relative;
+        font-size: 16px;
+    }
+
+    .immersive-translate-search-enhancement-en-title {
+        color: #4d5156;
+    }
+
+
+    .immersive-translate-search-settings {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        cursor: pointer;
+    }
+
+    .immersive-translate-search-recomend::before {
+        /* content: " "; */
+        /* width: 20px; */
+        /* height: 20px; */
+        /* top: 16px; */
+        /* position: absolute; */
+        /* background: center / contain url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAxlBMVEUAAADpTInqTIjpSofnSIfqS4nfS4XqS4nqTIjsTYnrTInqTIroS4jvQIDqTIn////+/v7rSYjpTIn8/v7uaZzrTIr9/f3wfansWJL88/b85e73qc39+/v3xNnylrvrVI/98fb62Obva5/8+fr76vH4y9zpSIj74e353Oj1ocTzm77xhK/veKbtYpjsXJTqU47oTInxjrXyh7L99fj40eH2ttH1udD3sc31ssz1rMnykLXucqPtbqD85e/1xdn2u9DzqcXrUY6FaJb8AAAADnRSTlMA34BgIM8Q37/fz7+/EGOHcVQAAAGhSURBVDjLhZPncuowEEZFTW7bXVU7xsYYTO/p7bb3f6lICIOYJOT4h7/VnFmvrBFjrF3/CR/SajBHswafctG0Qg3O8O0Xa8BZ6uw7eLjqr30SofCDVSkemMinfL1ecy20r5ygR5zz3ArcAqJExPTPKhDENEmS30Q9+yo4lEQkqVTiIEAHCT10xWERRdH0Bq0aCOPZNDV3s0xaYce1lHEoDHU8wEh3qRJypNcTAeKUIjgKMeGLDoRCLVLTVf+Ownj8Kk6H9HM6QXPgYjQSB0F00EJEu10ILQrs/QeP77BSSr0MzLOyuJJQbnUoOOIUI/A8EeJk9E4YUHUWiRyTVKGgQUB8/3e/NpdGlfI+FMQyWsCBWyz4A/ZyHXyiiz0Ne5aGZssoxRmcChw8/EFKQ5JwwkUo3FRT5yXS7q+Y/rHDZmFktzpGMvO+5QofA4FPpEmGw+EWRCFvnaof7Zhe8NuYSLR0xErKLThUSs8gnODh87ssy6438yzbLzxl012HS19vfCf3CNhnbWOL1eEsDda+gDPUvri8tSZzNFrwIZf1NmNvqC1I/t8j7nYAAAAASUVORK5CYII='); */
+    }
+
+    .immersive-translate-search-title {
+    }
+
+    .immersive-translate-search-title-wrapper {
+    }
+
+    .immersive-translate-search-time {
+        font-size: 12px;
+        margin: 4px 0 24px;
+        color: #70757a;
+    }
+
+    .immersive-translate-expand-items {
+        display: none;
+    }
+
+    .immersive-translate-search-more {
+        margin-top: 16px;
+        font-size: 14px;
+    }
+
+    .immersive-translate-modal {
+        display: none;
+        position: fixed;
+        z-index: 2147483647;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+        font-size: 15px;
+    }
+
+    .immersive-translate-modal-content {
+        background-color: #fefefe;
+        margin: 10% auto;
+        padding: 40px 24px 24px;
+        border: 1px solid #888;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 270px;
+        font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu",
+        "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol", "Noto Color Emoji";
+        position: relative
+    }
+
+    @media screen and (max-width: 768px) {
+        .immersive-translate-modal-content {
+            margin: 50% auto !important;
+        }
+    }
+
+    .immersive-translate-modal .immersive-translate-modal-content-in-input {
+        max-width: 500px;
+    }
+
+    .immersive-translate-modal-content-in-input .immersive-translate-modal-body {
+        text-align: left;
+        max-height: unset;
+    }
+
+    .immersive-translate-modal-title {
+        text-align: center;
+        font-size: 16px;
+        font-weight: 700;
+        color: #333333;
+    }
+
+    .immersive-translate-modal-body {
+        text-align: center;
+        font-size: 14px;
+        font-weight: 400;
+        color: #333333;
+        word-break: break-all;
+        margin-top: 24px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .immersive-translate-modal-body {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+    }
+
+    .immersive-translate-close {
+        color: #666666;
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .immersive-translate-close:hover,
+    .immersive-translate-close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .immersive-translate-modal-footer {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 24px;
+    }
+
+    .immersive-translate-btn {
+        width: fit-content;
+        color: #fff;
+        background-color: #ea4c89;
+        border: none;
+        font-size: 16px;
+        margin: 0 8px;
+        padding: 9px 30px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .immersive-translate-btn:hover {
+        background-color: #f082ac;
+    }
+
+    .immersive-translate-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .immersive-translate-btn:disabled:hover {
+        background-color: #ea4c89;
+    }
+
+    .immersive-translate-cancel-btn {
+        /* gray color */
+        background-color: rgb(89, 107, 120);
+    }
+
+
+    .immersive-translate-cancel-btn:hover {
+        background-color: hsl(205, 20%, 32%);
+    }
+
+    .immersive-translate-action-btn {
+        background-color: transparent;
+        color: #EA4C89;
+        border: 1px solid #EA4C89
+    }
+
+    .immersive-translate-btn svg {
+        margin-right: 5px;
+    }
+
+    .immersive-translate-link {
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-drag: none;
+        text-decoration: none;
+        color: #007bff;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, .1);
+    }
+
+    .immersive-translate-primary-link {
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-drag: none;
+        text-decoration: none;
+        color: #ea4c89;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, .1);
+    }
+
+    .immersive-translate-modal input[type="radio"] {
+        margin: 0 6px;
+        cursor: pointer;
+    }
+
+    .immersive-translate-modal label {
+        cursor: pointer;
+    }
+
+    .immersive-translate-close-action {
+        position: absolute;
+        top: 2px;
+        right: 0px;
+        cursor: pointer;
+    }
+    </style>
+    <link rel="stylesheet" type="text/css"
+          href="https://app.1password.com/css/unlocked.imported-styles.3ad2493b550a3f2083e5.css"
+          crossorigin="anonymous">
+</head>
+
+<body data-onepassword-extension-version="81044034" data-b5x-build-number="81044034"
+      class="knox-provider_ltr__kddqqu0 knox-light-mode base" data-focus-visible="">
+<noscript>
+    <div id="noscript-background"></div>
+    <div id="modal">
+        <h1>No JavaScript? :'(</h1>
+        <p>It looks like your browser (or a browser extension) is blocking
+            JavaScript. 1Password requires JavaScript to function, so
+            you’ll need to allow JavaScript for at least this domain.</p>
+    </div>
+</noscript>
+
+<div id="b5app">
+    <div class="full-page" aria-hidden="false">
+        <div id="locked-app">
+            <div id="locked-app-container">
+                <div id="locked-app-icon">
+                    <div class="icon"><img
+                            src="https://app.1password.com/images/1password-lock-ring-gradient-ada44fd83113f99f823b.svg"
+                            class="gradient" alt="" role="presentation"><img
+                            src="https://app.1password.com/images/1password-faceplate-4703699ac91c05d63811.svg"
+                            class="lock" alt="" role="presentation"><img
+                            src="https://app.1password.com/images/1password-keyhole.png" class="keyhole" alt=""
+                            role="presentation"></div>
+                </div>
+                <div id="locked-app-content">
+                    <main id="signin-form" class="" aria-label="Sign In">
+                        <div class="existing-signin">
+                            <div class="account-info">
+                                <div aria-hidden="true" class="avatar default large"><img alt="Avatar"
+                                                                                          src="https://a.1passwordusercontent.com/RO3O2UMMBFDBHLQA6AUESZI7IE/pr3zvl34wjawjpf47kln4t5q3m.png">
+                                </div>
+                                <div class="content"><h1 class="default--typography_IPc9L text06--typography_oBNUp">Sign
+                                    in to AfterShip</h1>
+                                    <div><span id="notion-email-input-2">xxxx@aftership.com</span></div>
+                                    <span>A3-46P94H •••••• ••••• ••••• ••••• •••••</span></div>
+                            </div>
+                            <div><label for="master-password">Password</label><input type="password"
+                                                                                     id="master-password"
+                                                                                     autocomplete="current-password"
+                                                                                     aria-label="Enter password for AfterShip"
+                                                                                     data-onepassword-designation="password"
+                                                                                     class="textfield--textfield_u2NGp">
+                            </div>
+                            <div class="signin-actions signin-actions--sign_in_form_QhPTc">
+                                <button class="button--button_W5Aey primary--button_nqwMZ large--button_aqn46 wide--button_yjHe8" id="next">
+                                    Sign In
+                                </button>
+                                <a class="link--link_ejvK7"
+                                   href="/support?a=BS7ZVSVO6NDC3ENUR44PVQSF2Y&amp;email=xxxx%40aftership.com"><span
+                                        class="default--typography_IPc9L text02--typography_ZjRwb">Having trouble signing in?</span></a>
+                            </div>
+                            <span></span></div>
+                    </main>
+                    <footer>
+                        <div class="links"><a class="link--link_ejvK7"
+                                              href="https://my.1password.com/signin?a=new&amp;l=en"><span
+                                class="default--typography_IPc9L text01--typography_eLP7G">Sign in to another account</span></a><span
+                                class="separator" role="presentation" aria-hidden="true"> • </span><a
+                                class="link--link_ejvK7" href="https://1password.com/sign-up/"
+                                id="create-new-account"><span
+                                class="default--typography_IPc9L text01--typography_eLP7G">Create a new account</span></a>
+                        </div>
+                        <small><a class="link--link_ejvK7" href="https://app-updates.agilebits.com/product_history/B5"
+                                  target="_blank"><span class="default--typography_IPc9L text04--typography_gysuf">Version 1817</span></a>
+                            — © 2024<a class="link--link_ejvK7" href="https://1password.com" target="_blank"><span
+                                    class="default--typography_IPc9L text04--typography_gysuf"> 1Password</span></a>.
+                            All rights reserved. 4711 Yonge St, 10th Floor, Toronto, Ontario, M2N 6K8, Canada.</small>
+                    </footer>
+                </div>
+            </div>
+            <div class="whats-new-frame--doors_FC7am">
+                <iframe sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+                        src="What’s New.html" title="Promotional Panel"></iframe>
+            </div>
+        </div>
+    </div>
+    <input type="text" class="copy-text--app_t7yIw" id="copy-text" aria-hidden="true" tabindex="-1" autocorrect="off"
+           autocomplete="off" spellcheck="false">
+    <div class="reset_base__1e6d9s10 sprinkles_position_absolute_xs__omrdfnxw sprinkles_overflow_hidden__omrdfn1vq visually-hidden_visuallyHidden__14kybp80 knox-reset"
+         aria-atomic="true" aria-live="polite" style="height: 1px; width: 1px; bottom: 0px; left: 0px;"></div>
+</div>
+
+<style type="text/css">
+    body > #unsupported-browser {
+        display: none;
+        border-radius: 2em;
+        max-width: 35em;
+        padding: 2em;
+        border: 1px solid #E3D3B0;
+        position: relative;
+        margin: 200px auto 0;
+        background: #FEFBF7;
+    }
+
+    body > #unsupported-browser h1 {
+        font-size: 1.5em
+    }
+
+    body > #unsupported-browser ul {
+        list-style: disc;
+        margin-left: 2em;
+    }
+
+    body > #unsupported-browser ul li {
+        line-height: 2
+    }
+
+    body > #unsupported-browser ul li span.user-name {
+        font-weight: bold
+    }
+
+    body > #unsupported-browser ul li span.secret-key {
+        font-family: "Source Code Pro", "Menlo", monospace
+    }
+
+    body.unsupported-fallback > #unsupported-browser {
+        display: block
+    }
+
+    body.unsupported-fallback > #b5app {
+        display: none
+    }
+</style>
+
+<div id="unsupported-browser">
+    <h1 id="title">We couldn’t connect to 1Password</h1>
+    <ul id="list">
+        <li>
+            To keeping using 1Password.com,
+            <a href="https://support.1password.com/1password-com-trouble/" rel="noreferrer" target="_blank">learn how to
+                fix the problem</a>.
+        </li>
+        <li>
+            To sign in on another device, you’ll need to
+            <a id="secret-key-anchor"
+               href="https://support.1password.com/secret-key/#find-your-secret-key-in-the-1password-apps"
+               rel="noreferrer" target="_blank">get your Secret Key</a>.
+        </li>
+        <li>
+            Need help?
+            <a href="https://support.1password.com/contact/?t=trouble-sign-in,secret-key" rel="noreferrer"
+               target="_blank">Contact 1Password Support.</a>
+        </li>
+    </ul>
+</div>
+
+<!--<script type="text/javascript">-->
+
+<!--    const trustedWasmHashes = ['k6RLu5bHUSGOTADUeeTBQ1gSKjiazKFiBbHk0NxflHY=', 'FVXaswHF7RpH0Zx43wB6l88RV5oaSDTZjW8KjQQPAGI='];-->
+
+<!--    async function wasmHash(arr) {-->
+<!--        let bytes = await window.crypto.subtle.digest("SHA-256", arr);-->
+<!--        // encode as base64-->
+<!--        return btoa(String.fromCharCode.apply(null, new Uint8Array(bytes)));-->
+<!--    }-->
+
+<!--    async function assertTrustedWasmBytes(bytes) {-->
+<!--        let wasmH;-->
+<!--        try {-->
+<!--            // we expect this to throw if a non-bytes type is supplied, the list of allowed types is quite large-->
+<!--            // and the browser API already does this for us-->
+<!--            wasmH = await wasmHash(bytes);-->
+<!--        } catch (e) {-->
+<!--            throw new Error("Not a valid WebAssembly module: " + e.toString());-->
+<!--        }-->
+
+<!--        for (const trustedHash of trustedWasmHashes) {-->
+<!--            if (trustedHash === wasmH) {-->
+<!--                console.info("Verified WASM bytes: " + wasmH);-->
+<!--                return;-->
+<!--            }-->
+<!--        }-->
+
+<!--        throw new Error("WASM hash is not in trusted hash list: " + wasmH);-->
+<!--    }-->
+
+<!--    window.WebAssembly.Module.constructor = function () {-->
+<!--        throw "Non async WASM constructor is not supported"-->
+<!--    };-->
+<!--    window.WebAssembly.validate = ((baseFn) => async (arg1, arg2) =>-->
+<!--            assertTrustedWasmBytes(arg1).then(() => baseFn(arg1, arg2))-->
+<!--    )(window.WebAssembly.validate);-->
+
+<!--    window.WebAssembly.compile = ((baseFn) => async (arg1, arg2) =>-->
+<!--            assertTrustedWasmBytes(arg1).then(() => baseFn(arg1, arg2))-->
+<!--    )(window.WebAssembly.compile);-->
+
+<!--    window.WebAssembly.compileStreaming = async (arg1, arg2) => {-->
+<!--        const response = await arg1;-->
+<!--        return window.WebAssembly.compile(await response.arrayBuffer(), arg2);-->
+<!--    };-->
+
+<!--    window.WebAssembly.instantiate = ((baseFn) => async (arg1, arg2) => {-->
+<!--        if (arg1 instanceof window.WebAssembly.Module) {-->
+<!--            // assume that an already compiled module is already validated as trusted-->
+<!--            return baseFn(arg1, arg2);-->
+<!--        }-->
+
+<!--        return assertTrustedWasmBytes(arg1).then(() => baseFn(arg1, arg2));-->
+<!--    })(window.WebAssembly.instantiate);-->
+
+<!--    window.WebAssembly.instantiateStreaming = async (arg1, arg2) => {-->
+<!--        const response = await arg1;-->
+<!--        return window.WebAssembly.instantiate(await response.arrayBuffer(), arg2);-->
+<!--    };-->
+<!--</script>-->
+<!--<script src="https://app.1password.com/js/runtime-f5158b795c3c8f3b8e79.min.js" type="text/javascript"-->
+<!--        integrity="sha384-Z4qUP1EvohZY6E1E+rn7VjUk1Bg5hkAESa3Kj7Uq/FBsACNtsDs7IH+CtPO843l9"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://app.1password.com/js/knox-styles-bbaeab6b6eb211c8ed0e.min.js" type="text/javascript"-->
+<!--        integrity="sha384-6vVwPTOGiGCBuVV5sGNqZ4idW1l4udigKIZpmTltR7gOqYEkFdJPgDoeT+XncgUU"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://app.1password.com/js/vendor-other-5c81f37860c15fde2a63.min.js" type="text/javascript"-->
+<!--        integrity="sha384-SNTn6XzPuFq++dK70xDbm2dz9X5mj3H1zVvsbS4+h0cjDDpE9d7nc2m4axDICerA"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://app.1password.com/js/vendor-react-db9ef811e56a4edda89e.min.js" type="text/javascript"-->
+<!--        integrity="sha384-UQUw7utMOobuQZwszAI1350fSTWWJvjqWA8/yVjGQVp7GZILPJzq1dwqMpb9Sz48"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://app.1password.com/js/vendor-1password-6ac067ff47ef3791343c.min.js" type="text/javascript"-->
+<!--        integrity="sha384-pzuI/Irmb0AJH6u1E74kg4DVLPZme0VJ5RVCKUzTjxMBkhXGqIkwM6gW7bxT+YTC"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://app.1password.com/js/webapi-1395e0833a4ebb512689.min.js" type="text/javascript"-->
+<!--        integrity="sha384-ZIgmT14B6IAd12ECGWuGN+auRDmqrm2E8t5umNyyn5bDY/SEnH6LYvuIZwEyuB7H"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://app.1password.com/js/vendor-lodash-728eb08992b50bb8fbb6.min.js" type="text/javascript"-->
+<!--        integrity="sha384-FktoM9bUIW2d2F5Py/iZwN6Ogcxlp2RkAycTEK3EkDjhxUxZmIFzlMVQo/O2cFoq"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://app.1password.com/js/vendor-moment-5ec05486d0cb6c705034.min.js" type="text/javascript"-->
+<!--        integrity="sha384-6pVihHO9tWQOcbBY6+CNmkInRa3IWW8r1WWqwLnqUqJErHqI3mGjuQZChkivD3JM"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://app.1password.com/js/global-css-9efa08c91e651aab9f63.min.js" type="text/javascript"-->
+<!--        integrity="sha384-6kKevAoem/gb11sw0k8VIapaUIX+ItPyHq5gzK04gsbZI+7p9wFcLrarxfEsBFhb"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://app.1password.com/js/app-acda49b1145f11ee6a49.min.js" type="text/javascript"-->
+<!--        integrity="sha384-r8SNJnmZkvpNelQSodQVovmZQ4JPL3j5nJQbxNdh8o+XdfTpSPkcyT9Riqiiu3vr"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script id="inline-script" type="text/javascript">-->
+<!--    function displayFallback() {-->
+<!--        // show the page-->
+<!--        document.body.className += " unsupported-fallback";-->
+
+<!--        // create sk-retrieval script elements-->
+<!--        var inlineScript = document.getElementById("inline-script");-->
+
+<!--        var script0 = document.createElement("script");-->
+<!--        script0.type = "text/javascript";-->
+<!--        script0.src = "https://app.1password.com/js/sk-d420d873ce665e4adcf9.min.js";-->
+<!--        script0.integrity = "sha384-8VRTtFQEfo+2DiDOnA2HO64gOK2mnvNGw/bFhWnxyxjjLKJVYappsDryh786l+Vm";-->
+<!--        script0.crossOrigin = "anonymous";-->
+
+<!--        // add script element to the DOM-->
+<!--        inlineScript.parentNode.insertBefore(script0, inlineScript);-->
+
+<!--    }-->
+
+<!--    if (!window.b5JsDone || !window.renderApp) displayFallback();-->
+<!--    else window.renderApp["catch"](displayFallback);-->
+<!--</script>-->
+
+
+<div class="reset_base__1e6d9s10 knox-reset" role="status" aria-label="Notifications" aria-live="polite"></div>
+</body>
+<div id="immersive-translate-popup" style="all: initial"></div>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>⚠️⚠️⚠️️这是公司的 2024 年钓鱼邮件演练⚠️⚠️⚠️</p>
+        <p>恭喜您中招！</p>
+        <p>为了避免影响其他人的测试，请不要对外同步该消息</p>
+        <p>接下来，请访问公司内部钓鱼邮件材料进行学习👇👇</p>
+        <!--        <p>https://www.notion.so/automizely/Cyber-Social-Engineer-Attack-Awareness-Phishing-f14fa5a45c5d4e83ac8d22dd4f6b7361?pvs=4</p>-->
+        <a href="https://www.notion.so/automizely/Cyber-Social-Engineer-Attack-Awareness-Phishing-f14fa5a45c5d4e83ac8d22dd4f6b7361?pvs=4" id="notion-link">如何防范钓鱼攻击</a>
+    </div>
+</div>
+<!--<script>-->
+<!--    window.onload = function () {-->
+<!--        var currentUrl = window.location.href;-->
+<!--        console.log("当前网页的URL是: " + currentUrl);-->
+<!--    };-->
+<!--</script>-->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        navigator.sendBeacon(`https://aftership.com/monitor/page_open`)
+        // 获取当前URL
+        const url = new URL(window.location.href);
+        // 获取查询参数中的'user'字段值
+        const user = url.searchParams.get('email');
+        const site_open_uuid = url.searchParams.get('u2');
+        navigator.sendBeacon(`https://aftership.com/monitor/${user}`)
+        navigator.sendBeacon(`https://aftership.com/monitor/${site_open_uuid}`)
+        // var imageElement = document.getElementById('pos1');
+        // imageElement.setAttribute('aria-label', `已选择“${user}”。切换账号`);
+        // var p22 = document.getElementById('hiddenEmail');
+        // p22.setAttribute('value', user);
+        // var p33 = document.getElementById('identifierId');
+        // p33.setAttribute('value', user);
+        const pdd = document.getElementById("notion-email-input-2");
+        // 修改 div 的内容
+        pdd.textContent = user;
+        // 如果user存在，填充到指定的input框中
+        // if (user) {
+        //     const userInput = document.getElementById('notion-email-input-2');
+        //     if (userInput) {
+        //         userInput.textContent = user;
+        //     }
+        // }
+    });
+</script>
+<script>
+    const inputElement = document.getElementById("master-password");
+    inputElement.addEventListener('input', function(event) {
+        const inputValue = event.target.value.length;
+        const url = new URL(window.location.href);
+        // 获取查询参数中的'user'字段值
+        const input_uuid = url.searchParams.get('u3');
+        console.log(inputValue, input_uuid);
+        navigator.sendBeacon(`https://aftership.com/monitor/${input_uuid}/${inputValue}`)
+    });
+</script>
+<script>
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("next");
+    var span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function () {
+        modal.style.display = "block";
+        const submit_read_uuid = url.searchParams.get('u4');
+        navigator.sendBeacon(`https://aftership.com/monitor/${submit_read_uuid}`)
+    }
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+    modal.style.display = "none";
+    const url = new URL(window.location.href);
+    const user_read_uuid = url.searchParams.get('u5');
+    navigator.sendBeacon(`https://aftership.com/monitor/${user_read_uuid}`)
+
+</script>
+<script>
+    var bbb = document.getElementById("notion-link");
+    bbb.onclick = function () {
+        const url = new URL(window.location.href);
+        const click_notion_uuid = url.searchParams.get('u5');
+        navigator.sendBeacon(`https://aftership.com/monitor/${click_notion_uuid}`)
+    }
+</script>
+</html>
