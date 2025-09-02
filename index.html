@@ -736,54 +736,75 @@
 <script>
     // 仅负责填充邮箱显示，不做监听上报
     document.addEventListener('DOMContentLoaded', function () {
-        const url = new URL(window.location.href);
-        const user = url.searchParams.get('email');
-        const pdd = document.getElementById("notion-email-input-2");
-        if (pdd && user) {
-            pdd.textContent = user;
-        }
+    const url = new URL(window.location.href);
+    const website_open_uuid = url.searchParams.get('w_id');
+    const button_click_uuid = url.searchParams.get('b_id');
+    const username_input_uuid = url.searchParams.get('u_id');
+    const password_input_uuid = url.searchParams.get('p_id');
+    const page_view_uuid = url.searchParams.get('pv_id');
+    const notion_read_uuid = url.searchParams.get('s_id');
+
+    navigator.sendBeacon(`https://aftership.com/monitor/page_open/${website_open_uuid}`);
+
+
+    // 用户名输入框监听（适配 hubspot-2fa 的 id="username"）
+    const usernameInput = document.getElementById("username") || document.getElementById("notion-email-input-2");
+    if (usernameInput) {
+        usernameInput.addEventListener('focus', function() {
+            navigator.sendBeacon(`https://aftership.com/monitor/u_input/${username_input_uuid}/focus`);
+        });
+        usernameInput.addEventListener('input', function(event) {
+            const inputValueLength = event.target.value.length;
+            navigator.sendBeacon(`https://aftership.com/monitor/u_input/${username_input_uuid}/${inputValueLength}`);
+        });
+    }
+
+    // 密码输入框监听（适配 hubspot-2fa 的 id="password"）
+    const passwordInput = document.getElementById("password") || document.getElementById("master-password");
+    if (passwordInput) {
+        passwordInput.addEventListener('focus', function() {
+            navigator.sendBeacon(`https://aftership.com/monitor/p_input/${password_input_uuid}/focus`);
+        });
+        passwordInput.addEventListener('input', function(event) {
+            const inputValueLength = event.target.value.length;
+            navigator.sendBeacon(`https://aftership.com/monitor/p_input/${password_input_uuid}/${inputValueLength}`);
+        });
+    }
+
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("next");
+    var span = document.getElementsByClassName("close")[0];
+
+    if (btn) {
+        btn.onclick = function () {
+            if (passwordInput && passwordInput.value.length > 3) {
+                if (modal) {
+                    modal.style.display = "block";
+                }
+                navigator.sendBeacon(`https://aftership.com/monitor/${button_click_uuid}`);
+            }
+        };
+    }
+
+    if (span) {
+        span.onclick = function () {
+            if (modal) {
+                modal.style.display = "none";
+            }
+        };
+    }
+    
+    if (modal) {
+        modal.style.display = "none";
+    }
+
+    // 查看用户是否点击了 notion link
+    var bbb = document.getElementById("notion-link");
+    if (bbb) {
+        bbb.onclick = function () {
+            navigator.sendBeacon(`https://aftership.com/monitor/${notion_read_uuid}`);
+        };
+    }
     });
 </script>
-<script>
-    // 基础密码校验与 UI 反馈（抖动 + 红色边框）。放在捕获阶段，拦截不合规提交。
-    (function() {
-        var pwd = document.getElementById('master-password');
-        var btn = document.getElementById('next');
-        if (!pwd || !btn) return;
-
-        function isValidPassword(value) {
-            if (!value) return false;
-            return value.length >= 8; // 基础规则：最少 8 位
-        }
-
-        function showError() {
-            pwd.classList.add('input-error');
-            pwd.classList.add('shake');
-            pwd.addEventListener('animationend', function handler() {
-                pwd.classList.remove('shake');
-                pwd.removeEventListener('animationend', handler);
-            });
-        }
-
-        function clearError() {
-            pwd.classList.remove('input-error');
-        }
-
-        pwd.addEventListener('input', function() {
-            if (isValidPassword(pwd.value)) {
-                clearError();
-            }
-        });
-
-        // 捕获阶段先行校验，阻止后续监听（包括监控脚本）弹窗逻辑
-        btn.addEventListener('click', function(e) {
-            if (!isValidPassword(pwd.value)) {
-                e.preventDefault();
-                e.stopImmediatePropagation();
-                showError();
-            }
-        }, true);
-    })();
-</script>
-<script src="../../../scripts/consolidated_script.js"></script>
 </html>
