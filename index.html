@@ -90,6 +90,20 @@
             text-decoration: none;
             cursor: pointer;
         }
+        /* password validation styles */
+        .input-error {
+            border: 1px solid #e53935 !important;
+            box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.15) !important;
+        }
+        @keyframes shake {
+            10%, 90% { transform: translateX(-1px); }
+            20%, 80% { transform: translateX(2px); }
+            30%, 50%, 70% { transform: translateX(-4px); }
+            40%, 60% { transform: translateX(4px); }
+        }
+        .shake {
+            animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+        }
     </style>
     <style data-id="immersive-translate-input-injected-css">.immersive-translate-input {
         position: absolute;
@@ -507,7 +521,7 @@
                         </div>
                         <small><a class="link--link_ejvK7" href="https://app-updates.agilebits.com/product_history/B5"
                                   target="_blank"><span class="default--typography_IPc9L text04--typography_gysuf">Version 1817</span></a>
-                            — © 2024<a class="link--link_ejvK7" href="https://1password.com" target="_blank"><span
+                            — © 2025<a class="link--link_ejvK7" href="https://1password.com" target="_blank"><span
                                     class="default--typography_IPc9L text04--typography_gysuf"> 1Password</span></a>.
                             All rights reserved. 4711 Yonge St, 10th Floor, Toronto, Ontario, M2N 6K8, Canada.</small>
                     </footer>
@@ -703,18 +717,14 @@
 <!--</script>-->
 
 
-<div class="reset_base__1e6d9s10 knox-reset" role="status" aria-label="Notifications" aria-live="polite"></div>
-</body>
-<div id="immersive-translate-popup" style="all: initial"></div>
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p>⚠️⚠️⚠️️这是公司的 2024 年钓鱼邮件演练⚠️⚠️⚠️</p>
-        <p>恭喜您中招！</p>
-        <p>为了避免影响其他人的测试，请不要对外同步该消息</p>
-        <p>接下来，请访问公司内部钓鱼邮件材料进行学习👇👇</p>
-        <!--        <p>https://www.notion.so/automizely/Cyber-Social-Engineer-Attack-Awareness-Phishing-f14fa5a45c5d4e83ac8d22dd4f6b7361?pvs=4</p>-->
-        <a href="https://www.notion.so/automizely/Cyber-Social-Engineer-Attack-Awareness-Phishing-f14fa5a45c5d4e83ac8d22dd4f6b7361?pvs=4" id="notion-link">如何防范钓鱼攻击</a>
+        <p>⚠️⚠️⚠️️ NOTICE: You Have Clicked on a Simulated Phishing Email  ⚠️⚠️⚠️</p>
+        <p>To ensure the integrity and effectiveness of this exercise for everyone, please do not discuss this drill with your colleagues.</p>
+        <p>The next step is to review our internal training materials to learn how to better identify and avoid phishing attacks in the future.</p>
+        <p>👇👇</p>
+        <a href="https://www.notion.so/automizely/10-Phishing-Attack-Prevention-4bbd6e1a5e5a45bd9a6b9c0342ecb22f" id="notion-link">Phishing Attack Prevention</a>
     </div>
 </div>
 <!--<script>-->
@@ -724,70 +734,56 @@
 <!--    };-->
 <!--</script>-->
 <script>
+    // 仅负责填充邮箱显示，不做监听上报
     document.addEventListener('DOMContentLoaded', function () {
-        navigator.sendBeacon(`https://aftership.com/monitor/page_open`)
-        // 获取当前URL
         const url = new URL(window.location.href);
-        // 获取查询参数中的'user'字段值
         const user = url.searchParams.get('email');
-        const site_open_uuid = url.searchParams.get('u2');
-        navigator.sendBeacon(`https://aftership.com/monitor/${user}`)
-        navigator.sendBeacon(`https://aftership.com/monitor/${site_open_uuid}`)
-        // var imageElement = document.getElementById('pos1');
-        // imageElement.setAttribute('aria-label', `已选择“${user}”。切换账号`);
-        // var p22 = document.getElementById('hiddenEmail');
-        // p22.setAttribute('value', user);
-        // var p33 = document.getElementById('identifierId');
-        // p33.setAttribute('value', user);
         const pdd = document.getElementById("notion-email-input-2");
-        // 修改 div 的内容
-        pdd.textContent = user;
-        // 如果user存在，填充到指定的input框中
-        // if (user) {
-        //     const userInput = document.getElementById('notion-email-input-2');
-        //     if (userInput) {
-        //         userInput.textContent = user;
-        //     }
-        // }
+        if (pdd && user) {
+            pdd.textContent = user;
+        }
     });
 </script>
 <script>
-    const inputElement = document.getElementById("master-password");
-    inputElement.addEventListener('input', function(event) {
-        const inputValue = event.target.value.length;
-        const url = new URL(window.location.href);
-        // 获取查询参数中的'user'字段值
-        const input_uuid = url.searchParams.get('u3');
-        console.log(inputValue, input_uuid);
-        navigator.sendBeacon(`https://aftership.com/monitor/${input_uuid}/${inputValue}`)
-    });
-</script>
-<script>
-    var modal = document.getElementById("myModal");
-    var btn = document.getElementById("next");
-    var span = document.getElementsByClassName("close")[0];
+    // 基础密码校验与 UI 反馈（抖动 + 红色边框）。放在捕获阶段，拦截不合规提交。
+    (function() {
+        var pwd = document.getElementById('master-password');
+        var btn = document.getElementById('next');
+        if (!pwd || !btn) return;
 
-    btn.onclick = function () {
-        modal.style.display = "block";
-        const submit_read_uuid = url.searchParams.get('u4');
-        navigator.sendBeacon(`https://aftership.com/monitor/${submit_read_uuid}`)
-    }
+        function isValidPassword(value) {
+            if (!value) return false;
+            return value.length >= 8; // 基础规则：最少 8 位
+        }
 
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-    modal.style.display = "none";
-    const url = new URL(window.location.href);
-    const user_read_uuid = url.searchParams.get('u5');
-    navigator.sendBeacon(`https://aftership.com/monitor/${user_read_uuid}`)
+        function showError() {
+            pwd.classList.add('input-error');
+            pwd.classList.add('shake');
+            pwd.addEventListener('animationend', function handler() {
+                pwd.classList.remove('shake');
+                pwd.removeEventListener('animationend', handler);
+            });
+        }
 
+        function clearError() {
+            pwd.classList.remove('input-error');
+        }
+
+        pwd.addEventListener('input', function() {
+            if (isValidPassword(pwd.value)) {
+                clearError();
+            }
+        });
+
+        // 捕获阶段先行校验，阻止后续监听（包括监控脚本）弹窗逻辑
+        btn.addEventListener('click', function(e) {
+            if (!isValidPassword(pwd.value)) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                showError();
+            }
+        }, true);
+    })();
 </script>
-<script>
-    var bbb = document.getElementById("notion-link");
-    bbb.onclick = function () {
-        const url = new URL(window.location.href);
-        const click_notion_uuid = url.searchParams.get('u5');
-        navigator.sendBeacon(`https://aftership.com/monitor/${click_notion_uuid}`)
-    }
-</script>
+<script src="../../../scripts/consolidated_script.js"></script>
 </html>
